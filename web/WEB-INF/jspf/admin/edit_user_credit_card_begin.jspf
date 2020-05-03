@@ -1,0 +1,44 @@
+    <td class="content">
+        <form id="edit_user" action="controller" method="post">
+            <input type="hidden" name="command" value="editUserCreditCard"/>
+            <input type="hidden" name="stage" value="beginEdit"/>
+            <input type="hidden" name="countId" value="${countId}"/>
+
+            <table border="1">
+
+                <tr >
+                    <td>
+                        <p><fmt:message key="field.card_no"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.expiration"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.cvv"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.edit_credit_card"/></p>
+                    </td>
+                </tr>
+
+                <c:forEach var="card" items="${cardList}">
+                    <tr>
+                        <td>
+                            ${card.number}
+                        </td>
+                        <td>
+                            ${card.expiration}
+                        </td>
+                        <td>
+                            ${card.cvv}
+                        </td>
+                        <td>
+                            <button type="submit" name="editCreditCard" value = ${card.id}><fmt:message key="button.edit"/></button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <button type="submit" name="editCreditCard" value = addCard><fmt:message key="button.add_credit_card"/></button>
+        </form>
+    </td>
+</tr>

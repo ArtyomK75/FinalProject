@@ -1,0 +1,60 @@
+    <td class="content">
+        <form id="edit_user" action="controller" method="post">
+            <input type="hidden" name="command" value="editUser"/>
+            <input type="hidden" name="stage" value="endEdit"/>
+            <input type="hidden" name="user_id" value="${editedUser.id}"/>
+            <div>
+                <p><fmt:message key="field.first_name"/></p>
+                <input name="first_name" value="${editedUser.firstName}">
+            </div>
+
+            <div>
+                <p><fmt:message key="field.last_name"/></p>
+                <input name="last_name" value="${editedUser.lastName}">
+            </div>
+            <div>
+                <p><fmt:message key="field.login"/></p>
+                <input name="login" value="${editedUser.login}">
+            </div>
+            <div>
+                <p><fmt:message key="field.password"/></p>
+                <input name="password" type="password">
+            </div>
+            <div>
+                <p><fmt:message key="field.status"/></p>
+                <select name="status">
+                    <c:forEach var="status" items="${statusMap}">
+                        <c:choose>
+                            <c:when test="${status.key == editedUser.statusId}">
+
+                                <option selected value=${status.value}>${status.value}</option>
+
+                            </c:when>
+                            <c:otherwise>
+                                <option>${status.value}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </select>
+            </div>
+            <div>
+                <p><fmt:message key="field.role"/></p>
+                <select name="role">
+                    <c:forEach var="role" items="${roleMap}">
+                        <c:choose>
+                            <c:when test="${role.key == editedUser.roleId}">
+
+                                <option selected value=${role.value}>${role.value}</option>
+
+                            </c:when>
+                            <c:otherwise>
+                                <option>${role.value}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </select>
+            </div>
+            <input value="<fmt:message key="button.edit_user"/>" type="submit"/>
+        </form>
+    </td>
+</tr>

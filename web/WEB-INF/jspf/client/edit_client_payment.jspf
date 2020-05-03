@@ -1,0 +1,74 @@
+<td class="content">
+    <form autocomplete="off" id="edit_user" action="controller" method="post">
+        <input type="hidden" name="command" value="editPayments"/>
+        <input type="hidden" name="stage" value="endEdit"/>
+        <input type="hidden" name="paymentId" value="${payment.id}"/>
+
+        <div>
+            <p><fmt:message key="field.payment_no"/></p>
+            <c:if test="${payment.id >= 0}">
+
+                ${payment.id}
+
+            </c:if>
+        </div>
+
+        <div>
+            <p><fmt:message key="field.date"/></p>
+            ${payment.date}
+        </div>
+
+        <div>
+            <p><fmt:message key="field.count"/></p>
+            <select required name="countId">
+                <option disabled value="-1">Choose count</option>
+                <c:forEach var="count" items="${clientCounts}">
+                    <c:choose>
+                        <c:when test="${count.id == payment.countId}">
+
+                            <option selected value=${count.id}>${count.count}</option>
+
+                        </c:when>
+                        <c:otherwise>
+
+                            <option value=${count.id}>${count.count}</option>
+
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+        </div>
+
+        <div>
+            <p><fmt:message key="field.receiver"/></p>
+            <input required name="countReceiver" value="${payment.countReceiver}" minlength="16" maxlength="34" width="60" pattern="[A-Z]{2,2}\d{14,32}"/>
+            Count must have IBAN format two literals in upper case and from 14 to 32 digits, depends on country bank of receiver.
+        </div>
+        <div>
+            <p><fmt:message key="field.sum"/></p>
+            <input required name="sum" type="number" step="0.01" min="0" placeholder="1.00" value="${payment.sum}"/>
+        </div>
+        <div>
+            <p><fmt:message key="field.status"/></p>
+            <select required name="paymentStatus">
+                <c:forEach var="status" items="${statusList}">
+                    <c:choose>
+                        <c:when test="${status.key == payment.statusId}">
+
+                            <option selected value=${status.key}>${status.value}</option>
+
+                        </c:when>
+                        <c:otherwise>
+
+                            <option value=${status.key}>${status.value}</option>
+
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </select>
+        </div>
+
+        <input value="${nameButtonEdit}" type="submit"/>
+    </form>
+</td>
+</tr>

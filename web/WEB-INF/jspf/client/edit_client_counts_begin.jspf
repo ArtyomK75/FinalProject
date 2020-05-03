@@ -1,0 +1,53 @@
+    <td class="content">
+        <form id="edit_user" action="controller" method="post">
+            <input type="hidden" name="command" value="listCounts"/>
+            <input type="hidden" name="stage" value="beginEdit"/>
+
+            <table border="1">
+
+                <tr >
+                    <td>
+                        <p><fmt:message key="field.count_no"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.count_is_blocked"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.count_unlocked"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.credit_cards"/></p>
+                    </td>
+                    <td>
+                        <p><fmt:message key="field.set_unblock_request"/></p>
+                    </td>
+                </tr>
+
+                <c:forEach var="count" items="${countList}">
+                    <tr>
+                        <td>
+                            ${count.count}
+                        </td>
+                        <td>
+                            ${count.isBlocked}
+                        </td>
+                        <td>
+                            ${count.unblockedRequest}
+                        </td>
+                        <td>
+                            <c:forEach var="creditCard" items="${count.creditCardList}">
+                                ${creditCard}
+                                </br>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:if test="${count.canUnblocked == 1}">
+                                 <button type="submit" name="setUnlockRequest" value = ${count.countId}><fmt:message key="button.set_request"/></button>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+    </td>
+</tr>

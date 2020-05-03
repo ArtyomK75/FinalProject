@@ -1,0 +1,25 @@
+<td class="content">
+    <form id="begin_edit_user" action="controller" method="post">
+        <input type="hidden" name="command" value="findUser"/>
+
+        <div>
+            <p><fmt:message key="field.first_name"/></p>
+            <input name="firstName">
+        </div>
+
+        <div>
+            <p><fmt:message key="field.last_name"/></p>
+            <input name="lastName">
+        </div>
+        <div>
+            <p><fmt:message key="field.login"/></p>
+            <input name="login">
+        </div>
+
+        <h3><fmt:message key="info.type_search"/></h3>
+
+        <button type="submit" name="typeSearch" value = "Find user"><fmt:message key="button.find_user"/></button>
+        </br>
+        <button type="submit" name="typeSearch" value = "Find user counts"><fmt:message key="button.find_user_counts"/></button>
+    </form>
+</td>

@@ -1,0 +1,59 @@
+<td class="content">
+    <form id="edit_user" action="controller" method="post">
+        <input type="hidden" name="command" value="editUserCounts"/>
+        <input type="hidden" name="stage" value="endEdit"/>
+        <input type="hidden" name="userId" value="${count.userId}"/>
+        <input type="hidden" name="editCount" value="${count.id}"/>
+
+        <div>
+            <p><fmt:message key="field.count_no"/></p>
+            <input required name="count" value="${count.count}" minlength="16" maxlength="34" width="60" pattern="[A-Z]{2,2}\d{14,32}"/>
+            <fmt:message key="info.format_count"/>
+        </div>
+        <div>
+            <p><fmt:message key="field.count_is_blocked"/></p>
+            <select name="is_blocked">
+                <c:forEach var="bool" items="${boolMap}">
+                    <c:choose>
+                        <c:when test="${bool.key == count.isBlockedId}">
+
+                            <option selected value=${bool.value}>${bool.value}</option>
+
+                        </c:when>
+                        <c:otherwise>
+
+                            <option>${bool.value}</option>
+
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+
+            </select>
+        </div>
+        <c:if test="${count.id >= 0}">
+            <div>
+                <p><fmt:message key="field.count_unlocked"/></p>
+                <select name="unlocked_request">
+                    <c:forEach var="bool" items="${boolMap}">
+                        <c:choose>
+                            <c:when test="${bool.key == unlockedRequest}">
+
+                                <option selected value=${bool.value}>${bool.value}</option>
+
+                            </c:when>
+                            <c:otherwise>
+
+                                <option>${bool.value}</option>
+
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                </select>
+            </div>
+        </c:if>
+
+        <input value="${nameButtonEdit}" type="submit"/>
+    </form>
+</td>
+</tr>

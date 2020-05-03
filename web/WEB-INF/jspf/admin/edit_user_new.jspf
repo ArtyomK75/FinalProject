@@ -1,0 +1,44 @@
+<tr>
+    <td class="content">
+        <form id="new_user" action="controller" method="post">
+            <input type="hidden" name="command" value="addUser"/>
+            <input type="hidden" name="stage" value="endAdd"/>
+
+            <div>
+                <p><fmt:message key="field.first_name"/></p>
+                <input name="first_name">
+            </div>
+
+            <div>
+                <p><fmt:message key="field.last_name"/></p>
+                <input name="last_name">
+            </div>
+            <div>
+                <p><fmt:message key="field.login"/></p>
+                <input name="login">
+            </div>
+            <div>
+                <p><fmt:message key="field.password"/></p>
+                <input name="password" type="password">
+            </div>
+            <div>
+                <p><fmt:message key="field.status"/></p>
+                <select name="status">
+                    <c:forEach var="status" items="${statusMap}">
+                        <option>${status.value}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div>
+                <p><fmt:message key="field.role"/></p>
+                <select name="role">
+                    <c:forEach var="role" items="${roleMap}">
+                        <option>${role.value}</option>
+                    </c:forEach>
+                </select>
+            </div>
+
+            <input value="<fmt:message key="button.create_user"/>" type="submit"/>
+        </form>
+    </td>
+</tr>

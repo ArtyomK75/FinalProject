@@ -1,0 +1,16 @@
+<!-- Change the lines below according your RDBMS and DB -->
+
+<Context>
+
+	<Resource name="jdbc/CLBankDB"
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000"
+		username="testuser" password="testpass" 
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		defaultAutoCommit="false"
+		defaultTransactionIsolation="READ_COMMITTED"
+		connectionProperties="useUnicode=yes;serverTimezone=UTC;characterEncoding=utf8;"
+		url="jdbc:mysql://127.0.0.1:3309/clbankdb"/>
+
+</Context>
