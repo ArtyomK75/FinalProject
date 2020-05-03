@@ -7,10 +7,8 @@ CREATE DATABASE clbankdb CHARACTER SET utf8 COLLATE utf8_bin;
 
 USE clbankdb;
 
--- --------------------------------------------------------------
--- ROLES
--- users roles
--- --------------------------------------------------------------
+--ENUM tables
+
 CREATE TABLE en_roles(
 
 	id INTEGER NOT NULL PRIMARY KEY,
@@ -39,10 +37,8 @@ INSERT INTO en_user_statuses VALUES(0, 'valid');
 INSERT INTO en_user_statuses VALUES(1, 'blocked');
 INSERT INTO en_user_statuses VALUES(2, 'new');
 
+--references tables
 
--- --------------------------------------------------------------
--- USERS
--- --------------------------------------------------------------
 CREATE TABLE ref_users(
 
 	id INTEGER NOT NULL auto_increment PRIMARY KEY,
@@ -95,7 +91,7 @@ INSERT INTO ref_credit_cards VALUES(DEFAULT, 5161536589872356, '2023-05-01 00:00
 INSERT INTO ref_credit_cards VALUES(DEFAULT, 5161536589874824, '2022-03-01 00:00:00', 258, 2);
 INSERT INTO ref_credit_cards VALUES(DEFAULT, 5161536589872387, '2024-12-01 00:00:00', 369, 3);
 
-
+--register tables
 
 CREATE TABLE reg_unlock_requests (
 	count_id INT NOT NULL UNIQUE REFERENCES ref_counts(id),
@@ -105,6 +101,7 @@ CREATE TABLE reg_unlock_requests (
 
 INSERT INTO reg_unlock_requests VALUES(2, DEFAULT, DEFAULT);
 
+--documents tables
 
 CREATE TABLE doc_payments (
 
@@ -130,6 +127,7 @@ INSERT INTO doc_payments VALUES(DEFAULT, '2020-04-04 13:46:19', 2, 1, 'UA5935100
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testpass';
 GRANT ALL PRIVILEGES ON clbankdb.* TO 'testuser'@'localhost';
 
+--You can unrem next lines for test creation tables.
 /*SELECT * FROM en_roles;
 SELECT * FROM en_statuses;
 SELECT * FROM ref_counts;
